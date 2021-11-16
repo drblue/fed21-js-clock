@@ -1,25 +1,43 @@
-/*
-console.log(1);
-console.log(2);
-console.log(3);
+/**
+ * JavaScript Clock
+ *
+ */
 
-setTimeout( () => {
-	console.log("Yooohooo!");
-}, 5000 );
+const hourEl = document.querySelector('#hour');
+const minuteEl = document.querySelector('#minute');
+const secondEl = document.querySelector('#second');
 
-console.log(4);
-console.log(5);
+const zeropad = num => {
 
-let tick = 0;
-setInterval( () => {
-	tick++;
-	console.log("tick:", tick);
+	if (num < 10) {
+		return "0" + num;
+	}
+	return num;
+
+	/*
+	return (num < 10)
+		? "0" + num
+		: num;
+	*/
+}
+
+const getAndUpdateClock = () => {
+	const now = new Date(); // gets current timestamp when this line was executed
+
+	// update DOM clock
+	hourEl.innerText = zeropad(now.getHours());
+	minuteEl.innerText = zeropad(now.getMinutes());
+	secondEl.innerText = zeropad(now.getSeconds());
+}
+
+
+setInterval(() => {
+
+	// do something every second
+	getAndUpdateClock();
+
 }, 1000);
 
-console.log("ticker started");
-*/
 
-const now = new Date(); // gets current timestamp when this line was executed
-console.log("Hour:", now.getHours());
-console.log("Minute:", now.getMinutes());
-console.log("Second:", now.getSeconds());
+// set initial time
+getAndUpdateClock();
