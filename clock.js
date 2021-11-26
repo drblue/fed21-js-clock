@@ -7,19 +7,7 @@ const hourEl = document.querySelector('#hour');
 const minuteEl = document.querySelector('#minute');
 const secondEl = document.querySelector('#second');
 
-const zeropad = num => {
-
-	if (num < 10) {
-		return "0" + num;
-	}
-	return num;
-
-	/*
-	return (num < 10)
-		? "0" + num
-		: num;
-	*/
-}
+const zeropad = num => num < 10 ? "0" + num : num
 
 const getAndUpdateClock = () => {
 	const now = new Date(); // gets current timestamp when this line was executed
